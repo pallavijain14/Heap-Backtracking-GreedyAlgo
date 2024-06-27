@@ -1,0 +1,24 @@
+public class Solution {
+  public int[] solve(int[] A, int B) {
+    PriorityQueue < Integer > pq = new PriorityQueue();
+
+    int i = 0, n = A.length;
+    for (i = 0; i <= Math.min(B, n - 1); i++) {
+      pq.offer(A[i]);
+    }
+
+    int j = 0;
+    while (i < n) {
+      A[j] = pq.poll();
+      pq.offer(A[i]);
+      i++;
+      j++;
+    }
+
+    while (j < n) {
+      A[j] = pq.poll();
+      j++;
+    }
+    return A;
+  }
+}
