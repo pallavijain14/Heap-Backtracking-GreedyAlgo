@@ -13,6 +13,7 @@ public class Solution {
 
     return ans;
   }
+
   public static int get_median() {
     int total = min_heap.size() + max_heap.size();
     int ret;
