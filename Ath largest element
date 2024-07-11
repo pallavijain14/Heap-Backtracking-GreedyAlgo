@@ -1,0 +1,24 @@
+public class Solution {
+  public int[] solve(int A, int[] B) {
+    PriorityQueue < Integer > pq = new PriorityQueue();
+    int n = B.length;
+    int[] ans = new int[n];
+
+    for (int i = 0; i < A; i++) {
+      pq.offer(B[i]);
+      if (i != A - 1) ans[i] = -1;
+      else ans[i] = pq.peek();
+    }
+
+    for (int i = A; i < n; i++) {
+      if (B[i] <= pq.peek()) {
+        ans[i] = pq.peek();
+      } else {
+        pq.poll();
+        pq.offer(B[i]);
+        ans[i] = pq.peek();
+      }
+    }
+    return ans;
+  }
+}
